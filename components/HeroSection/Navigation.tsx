@@ -16,9 +16,17 @@ export default function Navigation() {
       >
         Projects
       </a>
-      <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+            <a
+        href="/images/Julia-CV.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full transition duration-300"
+      >
         Resume
-      </button>
+      </a>
+      {/* <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+        Resume
+      </button> */}
     </nav>
   );
 }
