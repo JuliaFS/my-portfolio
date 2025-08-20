@@ -17,7 +17,6 @@ import DrugTrail from "../DrugTrail";
 export default function HeroSection() {
   return (
     <div className="relative min-h-screen bg-gray-900 flex flex-col items-center justify-around p-4">
-
       {/* ✅ Wrapper for positioning the navigation relative to the box */}
       <div className="relative w-full max-w-4xl">
         {/* ✅ Navigation - visually over the top-right of the box */}
@@ -26,11 +25,14 @@ export default function HeroSection() {
         </div>
 
         {/* ✅ Main rectangle box */}
-        <div className="relative bg-gray-800 rounded-lg shadow-xl p-8 overflow-hidden border border-purple-500">
+        <div className="relative bg-gray-800 h-[65vh] rounded-lg shadow-xl p-8 overflow-hidden border border-purple-500">
           <GrowingTriangle />
 
-          <div className="relative z-20 flex flex-col items-center justify-center h-full text-center py-16">
-            <ProfileAvatar src="/images/julia-192px.jpg" alt="Profile Picture" />
+          <div className="z-20 flex flex-col items-center justify-center text-center py-16">
+            <ProfileAvatar
+              src="/images/julia-192px.jpg"
+              alt="Profile Picture"
+            />
             <HeroText
               greeting="HELLO!"
               tagline="I'm Julia, Front-end Developer"

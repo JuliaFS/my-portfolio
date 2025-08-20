@@ -37,7 +37,7 @@ export default function HeroText({
   return (
     <>
       {use3DGreeting ? (
-        <div className="relative w-full h-40 flex items-center justify-center">
+        <div className="relative w-full flex items-center justify-center">
           <h1
             ref={textRef}
             className="text-5xl md:text-6xl font-extrabold text-white tracking-wider"

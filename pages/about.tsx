@@ -1,0 +1,59 @@
+// If HeroSection were to receive props, you'd define an interface for them:
+// interface HeroSectionProps {
+//   userName: string;
+//   title: string;
+// }
+
+import { FaUserCircle } from "react-icons/fa";
+import GrowingTriangle from "../components/HeroSection/GrowingTriangle";
+import Navigation from "../components/HeroSection/Navigation";
+import ProfileAvatar from "../components/HeroSection/ProfileAvatar";
+import SocialLinks from "../components/SocialLinks";
+
+// Your HeroSection component code goes here
+export default function AboutMe() {
+  return (
+    <div className="relative min-h-screen bg-gray-900 flex flex-col items-center justify-around p-4">
+      {/* ✅ Wrapper for positioning the navigation relative to the box */}
+      <div className="relative w-full max-w-4xl">
+        {/* ✅ Navigation - visually over the top-right of the box */}
+        <div className="absolute -top-6 right-4 z-30 text-white text-sm font-semibold">
+          <Navigation />
+        </div>
+
+        {/* ✅ Main rectangle box */}
+        <div className="relative bg-gray-800 h-[65vh] rounded-lg shadow-xl p-8 overflow-hidden border border-purple-500">
+          <GrowingTriangle />
+
+          <div className="z-50 flex flex-col items-center justify-center text-center pt-16">
+            <ProfileAvatar
+              src="/images/julia-192px.jpg"
+              alt="Profile Picture"
+            />
+          </div>
+          <div className="flex h-full">
+            <div className="flex flex-col items-center justify-center w-[80px]">
+              <SocialLinks />
+            </div>
+            <div className="flex-1 ml-6 mt-6 relative z-20 h-[50%] p-4 overflow-y-auto text-center bg-purple-200 rounded-lg">
+              <div className="flex w-full items-center justify-center bg-white opacity-50 mb-6 mt-2 py-2 gap-2">
+                <FaUserCircle className="text-purple-300 text-2xl" />
+                <h2>About me</h2>
+              </div>
+              <div>
+                <p>
+                  Passionate and motivated front-end developer with a strong
+                  foundation in HTML, CSS, and JavaScript. Eager to apply my
+                  foundational skills in building user-friendly and visually
+                  appealing web applications. I am a quick learner and enjoy
+                  solving problems, with a focus on creating fast and stylish
+                  applications.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
