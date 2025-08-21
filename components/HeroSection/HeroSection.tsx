@@ -1,11 +1,9 @@
-import Image from "next/image"; // For optimized images
-import { FaLinkedinIn, FaGithub, FaEnvelope } from "react-icons/fa"; // Example for icons
+
 import Navigation from "./Navigation";
 import GrowingTriangle from "./GrowingTriangle";
 import ProfileAvatar from "./ProfileAvatar";
 import HeroText from "./HeroText";
 import SocialLinks from "../SocialLinks";
-import DrugTrail from "../DrugTrail";
 
 // If HeroSection were to receive props, you'd define an interface for them:
 // interface HeroSectionProps {

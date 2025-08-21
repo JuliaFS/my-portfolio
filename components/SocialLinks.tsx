@@ -1,8 +1,8 @@
-// components/SocialLinks.tsx
+
 import React from "react";
 import { FaLinkedinIn, FaGithub, FaEnvelope } from "react-icons/fa"; // Example for icons
 
-// components/SocialLinks.tsx
+
 export default function SocialLinks() {
   return (
     <div className="absolute bottom-8 left-8 z-50 flex flex-row md:flex-col gap-4">

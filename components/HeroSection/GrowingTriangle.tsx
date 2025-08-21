@@ -1,4 +1,4 @@
-// components/GlowingTriangle.tsx
+
 import React from 'react';
 
 export default function GlowingTriangle() {
