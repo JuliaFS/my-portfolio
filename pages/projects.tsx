@@ -12,13 +12,13 @@ import Image from "next/image";
 const projects = [
   {
     src: "/images/projects/mnr-big.jpg",
-    alt: "Project 1",
+    alt: "Project for Metal Hold Pro",
     text: "Development of an ERP system from scratch for tracking and managing public procurement contracts undertaken by subcontractors. I am using React, React Query, Typescript, Axios, Tailwind CSS."
   },
   {
-    src: "/images/projects/project2.jpg",
-    alt: "Project 2",
-    text: "Project 2 – E-commerce dashboard with charts and authentication.",
+    src: "/images/projects/garant-burgas.jpg",
+    alt: "Project for Garand Burgas",
+    text: "Part-time online work on a project as a continuation of my SoftUni internship. We use React, React Query, and Tailwind CSS as front-end technologies for visualizing data.",
   },
   {
     src: "/images/projects/project3.jpg",
