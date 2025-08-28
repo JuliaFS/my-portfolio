@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FaUserCircle, FaArrowLeft, FaArrowRight, FaTimes } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaTimes } from "react-icons/fa";
 import { GoProjectSymlink } from "react-icons/go";
 import GrowingTriangle from "../components/HeroSection/GrowingTriangle";
 import Navigation from "../components/HeroSection/Navigation";
@@ -34,7 +34,7 @@ export default function Projects() {
   const prev = () => setIndex((i) => (i === 0 ? projects.length - 1 : i - 1));
   const next = () => setIndex((i) => (i === projects.length - 1 ? 0 : i + 1));
 
-    // Close lightbox on ESC key
+  // Close lightbox on ESC key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setIsOpen(false);
@@ -47,7 +47,7 @@ export default function Projects() {
     <div className="relative min-h-screen bg-gray-900 flex flex-col items-center justify-around p-4">
       {/* ✅ Wrapper for positioning the navigation relative to the box */}
       <div className="relative w-full max-w-4xl">
-        {/* ✅ Navigation - visually over the top-right of the box */}
+        {/* ✅ Navigation - top-right */}
         <div className="absolute -top-6 right-4 z-30 text-white text-sm font-semibold">
           <Navigation />
         </div>
@@ -64,22 +64,19 @@ export default function Projects() {
             />
           </div>
 
-          <div className="flex h-full">
-            {/* Social links */}
-            <div className="flex flex-col items-center justify-center w-[80px]">
-              <SocialLinks />
-            </div>
-
-            {/* Gallery area */}
-            <div className="flex-1 ml-6 mt-6 relative z-20 h-[54%] p-4 text-center bg-purple-200 rounded-lg">
+          {/* ✅ Flex container for purple rectangle + social links */}
+          <div className="flex flex-col lg:flex-row h-full">
+            
+            {/* Purple Rectangle (Gallery area) */}
+            <div className="order-1 lg:order-2 flex-1 ml-0 lg:ml-6 mt-6 relative z-20 h-28 lg:h-[54%] p-4 text-center bg-purple-200 rounded-lg overflow-y-auto">
               <div className="flex w-full items-center justify-center bg-white opacity-50 mb-6 mt-2 py-2 gap-2">
                 <GoProjectSymlink className="text-purple-300 text-2xl" />
                 <h2 className="font-semibold">My Projects</h2>
               </div>
 
-              {/* Image Gallery */}
-              <div className="relative flex items-center justify-center">
-                <div className="flex w-[80%] gap-2">
+              {/* Image + Text */}
+              <div className="relative flex items-center justify-center h-[40%] overflow-y-auto">
+                <div className="flex flex-col lg:flex-row w-[80%] gap-4 items-center lg:items-start h-full">
                   <Image
                     src={projects[index].src}
                     alt={projects[index].alt}
@@ -88,15 +85,13 @@ export default function Projects() {
                     className="rounded-lg shadow-lg object-cover"
                     onClick={() => setIsOpen(true)}
                   />
-                  {/* Project text */}
-                  <p className="text-left">
-                    {projects[index].text}
-                  </p>
+                  <p className="text-left">{projects[index].text}</p>
                 </div>
+
                 {/* Arrows */}
                 <button
                   onClick={prev}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 text-purple-600 hover:text-purple-800"
+                  className="absolute left-2 top-1/4 lg:top-1/2 -translate-y-1/2 text-purple-600 hover:text-purple-800"
                   title="Previous Project"
                   aria-label="Previous Project"
                 >
@@ -104,7 +99,7 @@ export default function Projects() {
                 </button>
                 <button
                   onClick={next}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 text-purple-600 hover:text-purple-800"
+                  className="absolute right-2 top-1/4 lg:top-1/2 -translate-y-1/2 text-purple-600 hover:text-purple-800"
                   title="Next Project"
                   aria-label="Next Project"
                 >
@@ -112,10 +107,16 @@ export default function Projects() {
                 </button>
               </div>
             </div>
+
+            {/* Social links */}
+            <div className="order-2 lg:order-1 flex flex-col items-center justify-center w-full lg:w-[80px] mt-4 lg:mt-0">
+              <SocialLinks />
+            </div>
           </div>
         </div>
       </div>
-            {/* ✅ Fullscreen Lightbox */}
+
+      {/* ✅ Fullscreen Lightbox */}
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex flex-col items-center justify-center">
           <button
@@ -142,3 +143,4 @@ export default function Projects() {
     </div>
   );
 }
+

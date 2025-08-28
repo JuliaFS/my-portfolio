@@ -31,11 +31,11 @@ export default function AboutMe() {
               alt="Profile Picture"
             />
           </div>
-          <div className="flex h-full">
-            <div className="flex flex-col items-center justify-center w-[80px]">
+          <div className="flex">
+            <div className="flex flex-col items-center justify-center w-[80px] bg-green-500">
               <SocialLinks />
             </div>
-            <div className="flex-1 ml-6 mt-6 relative z-20 h-[54%] p-4 overflow-y-auto text-center bg-purple-200 rounded-lg">
+            <div className="flex-1 ml-6 mt-6 relative z-20 h-[44%] p-4 overflow-y-auto text-center bg-purple-200 rounded-lg">
               <div className="flex w-full items-center justify-center bg-white opacity-50 mb-6 mt-2 py-2 gap-2">
                 <FaUserCircle className="text-purple-300 text-2xl" />
                 <h2 className="font-semibold">About me</h2>
