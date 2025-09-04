@@ -1,19 +1,17 @@
+// src/pages/Projects.js
 "use client";
-
 import { useEffect, useState } from "react";
-import { FaArrowLeft, FaArrowRight, FaTimes } from "react-icons/fa";
+//import { FaArrowLeft, FaArrowRight, FaTimes } from "react-icons/fa";
 import { GoProjectSymlink } from "react-icons/go";
-import GrowingTriangle from "../components/HeroSection/GrowingTriangle";
-import Navigation from "../components/HeroSection/Navigation";
-import ProfileAvatar from "../components/HeroSection/ProfileAvatar";
-import SocialLinks from "../components/SocialLinks";
 import Image from "next/image";
+import PageLayout from "../components/PageLayout";
+import { FaArrowLeft, FaArrowRight, FaTimes } from "react-icons/fa";
 
 const projects = [
   {
     src: "/images/projects/mnr-big.jpg",
     alt: "Project for Metal Hold Pro",
-    text: "Development of an ERP system from scratch for tracking and managing public procurement contracts undertaken by subcontractors. I am using React, React Query, Typescript, Axios, Tailwind CSS."
+    text: "Development of an ERP system from scratch for tracking and managing public procurement contracts undertaken by subcontractors. I am using React, React Query, Typescript, Axios, Tailwind CSS.",
   },
   {
     src: "/images/projects/garant-burgas.jpg",
@@ -44,103 +42,76 @@ export default function Projects() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-gray-900 flex flex-col items-center justify-around p-4">
-      {/* ✅ Wrapper for positioning the navigation relative to the box */}
-      <div className="relative w-full max-w-4xl">
-        {/* ✅ Navigation - top-right */}
-        <div className="absolute -top-6 right-4 z-30 text-white text-sm font-semibold">
-          <Navigation />
+    <PageLayout>
+      {/* Your unique content for the About Me page */}
+      <div className="h-full flex-1 ml-6 mt-6 relative p-4 overflow-y-auto text-center bg-purple-200 rounded-lg z-50">
+        {/* <div className="flex w-full items-center justify-center bg-white opacity-50 mb-6 mt-2 py-2 gap-2">
+          <GoProjectSymlink className="text-purple-300 text-2xl" />
+          <h2 className="font-semibold">My Projects</h2>
+        </div> */}
+
+        <div className="flex w-full items-center justify-center bg-white opacity-50 mb-6 mt-2 py-2 gap-2">
+          <GoProjectSymlink className="text-purple-300 text-2xl" />
+          <h2 className="font-semibold">My Projects</h2>
         </div>
 
-        {/* ✅ Main rectangle box */}
-        <div className="relative bg-gray-800 h-[65vh] rounded-lg shadow-xl p-8 overflow-hidden border border-purple-500">
-          <GrowingTriangle />
-
-          {/* Profile Avatar */}
-          <div className="z-50 flex flex-col items-center justify-center text-center pt-16">
-            <ProfileAvatar
-              src="/images/julia-192px.jpg"
-              alt="Profile Picture"
+        {/* Image + Text */}
+        <div className="h-[15vh] relative flex items-center justify-center">
+          <div className="flex flex-col lg:flex-row w-[80%] gap-4 items-center lg:items-start">
+            <Image
+              src={projects[index].src}
+              alt={projects[index].alt}
+              width={200}
+              height={160}
+              className="rounded-lg shadow-lg object-cover"
+              onClick={() => setIsOpen(true)}
             />
+            <p className="text-left">{projects[index].text}</p>
           </div>
 
-          {/* ✅ Flex container for purple rectangle + social links */}
-          <div className="flex flex-col lg:flex-row h-full">
-            
-            {/* Purple Rectangle (Gallery area) */}
-            <div className="order-1 lg:order-2 flex-1 ml-0 lg:ml-6 mt-6 relative z-20 h-28 lg:h-[54%] p-4 text-center bg-purple-200 rounded-lg overflow-y-auto">
-              <div className="flex w-full items-center justify-center bg-white opacity-50 mb-6 mt-2 py-2 gap-2">
-                <GoProjectSymlink className="text-purple-300 text-2xl" />
-                <h2 className="font-semibold">My Projects</h2>
-              </div>
-
-              {/* Image + Text */}
-              <div className="relative flex items-center justify-center h-[40%] overflow-y-auto">
-                <div className="flex flex-col lg:flex-row w-[80%] gap-4 items-center lg:items-start h-full">
-                  <Image
-                    src={projects[index].src}
-                    alt={projects[index].alt}
-                    width={200}
-                    height={160}
-                    className="rounded-lg shadow-lg object-cover"
-                    onClick={() => setIsOpen(true)}
-                  />
-                  <p className="text-left">{projects[index].text}</p>
-                </div>
-
-                {/* Arrows */}
-                <button
-                  onClick={prev}
-                  className="absolute left-2 top-1/4 lg:top-1/2 -translate-y-1/2 text-purple-600 hover:text-purple-800"
-                  title="Previous Project"
-                  aria-label="Previous Project"
-                >
-                  <FaArrowLeft size={28} />
-                </button>
-                <button
-                  onClick={next}
-                  className="absolute right-2 top-1/4 lg:top-1/2 -translate-y-1/2 text-purple-600 hover:text-purple-800"
-                  title="Next Project"
-                  aria-label="Next Project"
-                >
-                  <FaArrowRight size={28} />
-                </button>
-              </div>
-            </div>
-
-            {/* Social links */}
-            <div className="order-2 lg:order-1 flex flex-col items-center justify-center w-full lg:w-[80px] mt-4 lg:mt-0">
-              <SocialLinks />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ✅ Fullscreen Lightbox */}
-      {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex flex-col items-center justify-center">
+          {/* Arrows */}
           <button
-            onClick={() => setIsOpen(false)}
-            className="absolute top-6 right-6 text-white hover:text-gray-300"
-            title="Close"
-            aria-label="Close"
+            onClick={prev}
+            className="absolute left-2 top-1/4 lg:top-1/2 -translate-y-1/2 text-purple-600 hover:text-purple-800"
+            title="Previous Project"
+            aria-label="Previous Project"
           >
-            <FaTimes size={32} />
+            <FaArrowLeft size={28} />
           </button>
-
-          <Image
-            src={projects[index].src}
-            alt={projects[index].alt}
-            width={1000}
-            height={700}
-            className="rounded-lg shadow-lg object-contain max-h-[90vh] max-w-[90vw]"
-          />
-
-          {/* Optional project text in lightbox */}
-          <p className="mt-4 text-white text-lg">{projects[index].text}</p>
+          <button
+            onClick={next}
+            className="absolute right-2 top-1/4 lg:top-1/2 -translate-y-1/2 text-purple-600 hover:text-purple-800"
+            title="Next Project"
+            aria-label="Next Project"
+          >
+            <FaArrowRight size={28} />
+          </button>
         </div>
-      )}
-    </div>
+        {/* ✅ Fullscreen Lightbox */}
+        {isOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex flex-col items-center justify-center">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-6 right-6 text-white hover:text-gray-300"
+              title="Close"
+              aria-label="Close"
+            >
+              <FaTimes size={32} />
+            </button>
+
+            <Image
+              src={projects[index].src}
+              alt={projects[index].alt}
+              width={1000}
+              height={700}
+              className="rounded-lg shadow-lg object-contain max-w-[90vw]"
+            />
+
+            {/* Optional project text in lightbox */}
+            <p className="mt-4 text-white text-lg">{projects[index].text}</p>
+          </div>
+        )}
+      </div>
+    </PageLayout>
   );
 }
-

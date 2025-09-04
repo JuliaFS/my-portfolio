@@ -35,9 +35,9 @@ export default function HeroText({
   }, [use3DGreeting]);
 
   return (
-    <>
+    <div className="flex flex-col justify-end items-end">
       {use3DGreeting ? (
-        <div className="relative w-full flex items-center justify-center">
+        <div className="w-full flex items-center justify-center">
           <h1
             ref={textRef}
             className="text-5xl md:text-6xl font-extrabold text-white tracking-wider"
@@ -51,17 +51,17 @@ export default function HeroText({
         </h1>
       )}
 
-      <div>
+      <div className="w-full flex items-center justify-center">
         <DrugTrail />
         <p
           id="tagline"
-          className="text-xl md:text-2xl text-purple-200 mb-8 text-right"
+          className="text-xl md:text-2xl text-purple-200"
           style={{ textShadow: '0 0 5px rgba(196, 181, 253, 0.5)' }}
         >
           {tagline}
         </p>
       </div>
-    </>
+    </div>
   );
 }
 
