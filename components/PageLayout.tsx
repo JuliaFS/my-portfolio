@@ -15,7 +15,7 @@ export default function PageLayout({ children }) {
 
         {/* Main container split into 2 rows */}
         {/* Main container split into 2 rows */}
-        <div className="relative grid grid-rows-[30%_70%] lg:grid-rows-[45%_55%] h-[700px] md:[h-600px] lg:h-[500px] bg-gray-800 rounded-lg shadow-xl p-8 overflow-hidden border border-purple-500 min-h-0">
+        <div className="relative grid grid-rows-[30%_70%] lg:grid-rows-[45%_55%] h-[80vh] md:[h-600px] lg:h-[500px] bg-gray-800 rounded-lg shadow-xl p-8 overflow-hidden border border-purple-500 min-h-0">
           {/* Top row (red) */}
           <div className="relative z-10">
             <GrowingTriangle />
