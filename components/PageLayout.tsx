@@ -18,7 +18,7 @@ export default function PageLayout({ children }) {
           {/* Top row (red) */}
           <div className="relative z-10">
             <GrowingTriangle />
-            <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-50">
+            <div className="absolute lg:top-4 left-1/2 transform -translate-x-1/2 z-50">
               <ProfileAvatar
                 src="/images/julia-192px.jpg"
                 alt="Profile Picture"

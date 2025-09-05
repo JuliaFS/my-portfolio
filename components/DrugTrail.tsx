@@ -39,8 +39,8 @@ export default function DragFlowerTrail() {
 //   x = window.innerWidth / 2 - 180;
 //   y = window.innerHeight / 2 - 60;
 } else { // Small screens (sm)
-  x = window.innerWidth / 2 - 200;
-  y = window.innerHeight / 2 - 70;
+  x = window.innerWidth / 2 - 180;
+  y = window.innerHeight / 2 - 90;
 }
         
         setHandPos({ x, y });
