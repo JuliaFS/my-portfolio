@@ -58,7 +58,7 @@ export default function Projects() {
           className="rounded-lg shadow-lg object-cover"
           onClick={() => setIsOpen(true)}
         />
-        <p className="text-left">{projects[index].text}</p>
+        <p className="text-left px-2">{projects[index].text}</p>
       </div>
 
       {/* Arrows */}
