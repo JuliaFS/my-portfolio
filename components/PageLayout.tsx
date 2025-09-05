@@ -1,5 +1,4 @@
 // src/components/PageLayout.js
-
 import ProfileAvatar from "./HeroSection/ProfileAvatar";
 import Navigation from "./HeroSection/Navigation";
 import SocialLinks from "./SocialLinks";
@@ -9,31 +8,33 @@ export default function PageLayout({ children }) {
   return (
     <div className="relative min-h-screen bg-gray-900 flex flex-col items-center justify-around p-4">
       <div className="relative w-full h-full max-w-4xl">
-        <div className="absolute -top-6 right-4 z-30 text-white text-sm font-semibold">
+        {/* Navigation */}
+        <div className="absolute -top-6 right-4 z-30 text-white text-xs md:text-sm font-semibold">
           <Navigation />
         </div>
 
-        <div className="relative flex flex-col bg-gray-800 h-[55vh] rounded-lg shadow-xl p-8 overflow-hidden border border-purple-500">
-          <div className="w-full h-[40vh]">
+        {/* Main container split into 2 rows */}
+        <div className="relative grid grid-rows-[30%_70%] lg:grid-rows-[35%_65%] h-[60vh] lg:h-[55vh] bg-gray-800 rounded-lg shadow-xl p-8 overflow-hidden border border-purple-500">
+          {/* Top row (red) */}
+          <div className="relative z-10">
             <GrowingTriangle />
-
-            {/* Profile Avatar is now inside the main box and positioned */}
-            <div className="absolute top-16 left-1/2 transform -translate-x-1/2 z-50">
+            <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-50">
               <ProfileAvatar
                 src="/images/julia-192px.jpg"
                 alt="Profile Picture"
               />
             </div>
           </div>
-        
-          <div className="flex-grow h-full flex">
-            <div>
-              <SocialLinks />
-            </div>
-            <div className="flex-grow">
-              {children} {/* This is where the page-specific content goes */}
-            </div>
-          </div>
+
+          {/* Bottom row (green) */}
+          <div className="relative z-20 grid grid-cols-1 lg:grid-cols-[1fr_12fr] gap-4 h-full">
+  <div className="rounded-lg p-4 h-full overflow-y-auto lg:overflow-hidden order-first lg:order-last">
+    {children}
+  </div>
+  <div className="rounded-lg p-4 h-full order-last lg:order-first">
+    <SocialLinks />
+  </div>
+</div>
         </div>
       </div>
     </div>

@@ -55,8 +55,7 @@ export default function HeroText({
         <DrugTrail />
         <p
           id="tagline"
-          className="text-xl md:text-2xl text-purple-200"
-          style={{ textShadow: '0 0 5px rgba(196, 181, 253, 0.5)' }}
+          className="text-lg md:text-2xl text-purple-200 [text-shadow:0_0_5px_rgba(196,181,253,0.5)]"
         >
           {tagline}
         </p>

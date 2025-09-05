@@ -1,7 +1,6 @@
 // src/pages/Projects.js
 "use client";
 import { useEffect, useState } from "react";
-//import { FaArrowLeft, FaArrowRight, FaTimes } from "react-icons/fa";
 import { GoProjectSymlink } from "react-icons/go";
 import Image from "next/image";
 import PageLayout from "../components/PageLayout";
@@ -32,7 +31,6 @@ export default function Projects() {
   const prev = () => setIndex((i) => (i === 0 ? projects.length - 1 : i - 1));
   const next = () => setIndex((i) => (i === projects.length - 1 ? 0 : i + 1));
 
-  // Close lightbox on ESC key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setIsOpen(false);
@@ -42,76 +40,69 @@ export default function Projects() {
   }, []);
 
   return (
-    <PageLayout>
-      {/* Your unique content for the About Me page */}
-      <div className="h-full flex-1 ml-6 mt-6 relative p-4 overflow-y-auto text-center bg-purple-200 rounded-lg z-50">
-        {/* <div className="flex w-full items-center justify-center bg-white opacity-50 mb-6 mt-2 py-2 gap-2">
-          <GoProjectSymlink className="text-purple-300 text-2xl" />
-          <h2 className="font-semibold">My Projects</h2>
-        </div> */}
+<PageLayout>
+  <div className="w-full z-20 p-4 text-center bg-purple-200 rounded-lg">
+    <div className="flex w-full items-center justify-center bg-white opacity-50 mb-6 mt-2 py-2 gap-2">
+      <GoProjectSymlink className="text-purple-300 text-2xl" />
+      <h2 className="font-semibold">My Projects</h2>
+    </div>
 
-        <div className="flex w-full items-center justify-center bg-white opacity-50 mb-6 mt-2 py-2 gap-2">
-          <GoProjectSymlink className="text-purple-300 text-2xl" />
-          <h2 className="font-semibold">My Projects</h2>
-        </div>
-
-        {/* Image + Text */}
-        <div className="h-[15vh] relative flex items-center justify-center">
-          <div className="flex flex-col lg:flex-row w-[80%] gap-4 items-center lg:items-start">
-            <Image
-              src={projects[index].src}
-              alt={projects[index].alt}
-              width={200}
-              height={160}
-              className="rounded-lg shadow-lg object-cover"
-              onClick={() => setIsOpen(true)}
-            />
-            <p className="text-left">{projects[index].text}</p>
-          </div>
-
-          {/* Arrows */}
-          <button
-            onClick={prev}
-            className="absolute left-2 top-1/4 lg:top-1/2 -translate-y-1/2 text-purple-600 hover:text-purple-800"
-            title="Previous Project"
-            aria-label="Previous Project"
-          >
-            <FaArrowLeft size={28} />
-          </button>
-          <button
-            onClick={next}
-            className="absolute right-2 top-1/4 lg:top-1/2 -translate-y-1/2 text-purple-600 hover:text-purple-800"
-            title="Next Project"
-            aria-label="Next Project"
-          >
-            <FaArrowRight size={28} />
-          </button>
-        </div>
-        {/* ✅ Fullscreen Lightbox */}
-        {isOpen && (
-          <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex flex-col items-center justify-center">
-            <button
-              onClick={() => setIsOpen(false)}
-              className="absolute top-6 right-6 text-white hover:text-gray-300"
-              title="Close"
-              aria-label="Close"
-            >
-              <FaTimes size={32} />
-            </button>
-
-            <Image
-              src={projects[index].src}
-              alt={projects[index].alt}
-              width={1000}
-              height={700}
-              className="rounded-lg shadow-lg object-contain max-w-[90vw]"
-            />
-
-            {/* Optional project text in lightbox */}
-            <p className="mt-4 text-white text-lg">{projects[index].text}</p>
-          </div>
-        )}
+    {/* This div needs to be a flex container to allow its content to grow */}
+    <div className=" relative flex flex-col items-center justify-start">
+      <div className="flex flex-col lg:flex-row w-[80%] gap-4 items-center lg:items-start">
+        <Image
+          src={projects[index].src}
+          alt={projects[index].alt}
+          width={200}
+          height={160}
+          className="rounded-lg shadow-lg object-cover"
+          onClick={() => setIsOpen(true)}
+        />
+        <p className="text-left">{projects[index].text}</p>
       </div>
-    </PageLayout>
+
+      {/* Arrows */}
+      <button
+        onClick={prev}
+        className="absolute left-2 top-1/4 lg:top-1/2 -translate-y-1/2 text-purple-600 hover:text-purple-800"
+        title="Previous Project"
+        aria-label="Previous Project"
+      >
+        <FaArrowLeft size={28} />
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-2 top-1/4 lg:top-1/2 -translate-y-1/2 text-purple-600 hover:text-purple-800"
+        title="Next Project"
+        aria-label="Next Project"
+      >
+        <FaArrowRight size={28} />
+      </button>
+    </div>
+
+    {/* Fullscreen Lightbox */}
+    {isOpen && (
+      <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex flex-col items-center justify-center">
+        <button
+          onClick={() => setIsOpen(false)}
+          className="absolute top-6 right-6 text-white hover:text-gray-300"
+          title="Close"
+          aria-label="Close"
+        >
+          <FaTimes size={32} />
+        </button>
+        <Image
+          src={projects[index].src}
+          alt={projects[index].alt}
+          width={1000}
+          height={700}
+          className="rounded-lg shadow-lg object-contain max-w-[90vw]"
+        />
+        <p className="mt-4 text-white text-lg">{projects[index].text}</p>
+      </div>
+    )}
+  </div>
+</PageLayout>
+
   );
 }

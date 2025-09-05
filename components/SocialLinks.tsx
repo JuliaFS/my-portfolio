@@ -5,7 +5,7 @@ import { FaLinkedinIn, FaGithub, FaEnvelope } from "react-icons/fa"; // Example 
 
 export default function SocialLinks() {
   return (
-    <div className="z-50 h-full flex flex-row md:flex-col gap-4 justify-end">
+    <div className="z-50 h-full flex flex-row lg:flex-col gap-4 justify-end">
       <a
         href="https://www.linkedin.com/in/yulia-stambolieva-47b777304/"
         target="_blank"

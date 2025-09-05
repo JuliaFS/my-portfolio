@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function GlowingTriangle() {
   return (
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+    <div className="absolute inset-0 top-20 lg:top-44 flex items-center justify-center pointer-events-none z-10">
       <div className="
         w-0 h-0 border-l-[200px] border-l-transparent
         border-r-[200px] border-r-transparent
