@@ -41,7 +41,7 @@ export default function Projects() {
 
   return (
 <PageLayout>
-  <div className="w-full z-20 p-4 text-center bg-purple-200 rounded-lg">
+  <div className="w-full h-full z-20 p-4 text-center bg-purple-200 rounded-lg">
     <div className="flex w-full items-center justify-center bg-white opacity-50 mb-6 mt-2 py-2 gap-2">
       <GoProjectSymlink className="text-purple-300 text-2xl" />
       <h2 className="font-semibold">My Projects</h2>
