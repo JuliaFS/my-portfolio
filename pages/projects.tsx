@@ -41,14 +41,14 @@ export default function Projects() {
 
   return (
 <PageLayout>
-  <div className="w-full h-full z-20 p-4 text-center bg-purple-200 rounded-lg">
+  <div className="w-full z-20 p-4 text-center bg-purple-200 rounded-lg flex flex-col h-full">
     <div className="flex w-full items-center justify-center bg-white opacity-50 mb-6 mt-2 py-2 gap-2">
       <GoProjectSymlink className="text-purple-300 text-2xl" />
       <h2 className="font-semibold">My Projects</h2>
     </div>
 
-    {/* This div needs to be a flex container to allow its content to grow */}
-    <div className=" relative flex flex-col items-center justify-start">
+    {/* <div className="relative flex-1 flex flex-col items-center justify-start overflow-y-auto w-full min-h-0"> */}
+      <div className="relative w-full h-full overflow-y-auto flex flex-col items-center justify-start">
       <div className="flex flex-col lg:flex-row w-[80%] gap-4 items-center lg:items-start">
         <Image
           src={projects[index].src}
@@ -64,19 +64,19 @@ export default function Projects() {
       {/* Arrows */}
       <button
         onClick={prev}
-        className="absolute left-2 top-1/4 lg:top-1/2 -translate-y-1/2 text-purple-600 hover:text-purple-800"
+        className="absolute left-0 lg:left-2 top-1/4 lg:top-1/2 -translate-y-1/2 text-purple-600 hover:text-purple-800"
         title="Previous Project"
         aria-label="Previous Project"
       >
-        <FaArrowLeft size={28} />
+        <FaArrowLeft className="text-xl lg:text-2xl" />
       </button>
       <button
         onClick={next}
-        className="absolute right-2 top-1/4 lg:top-1/2 -translate-y-1/2 text-purple-600 hover:text-purple-800"
+        className="absolute right-0 lg:right-2 top-1/4 lg:top-1/2 -translate-y-1/2 text-purple-600 hover:text-purple-800"
         title="Next Project"
         aria-label="Next Project"
       >
-        <FaArrowRight size={28} />
+        <FaArrowRight className="text-xl lg:text-2xl" />
       </button>
     </div>
 
@@ -98,7 +98,7 @@ export default function Projects() {
           height={700}
           className="rounded-lg shadow-lg object-contain max-w-[90vw]"
         />
-        <p className="mt-4 text-white text-lg">{projects[index].text}</p>
+        <p className="mt-4 text-white px-6 md:px-12 text-lg text-left">{projects[index].text}</p>
       </div>
     )}
   </div>
