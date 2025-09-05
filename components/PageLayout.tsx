@@ -9,7 +9,7 @@ export default function PageLayout({ children }) {
     <div className="relative min-h-screen bg-gray-900 flex flex-col items-center justify-around p-4">
       <div className="relative w-full h-full max-w-4xl">
         {/* Navigation */}
-        <div className="absolute -top-6 right-4 z-30 text-white text-xs md:text-sm font-semibold">
+        <div className="absolute -top-6 right-4 z-10 text-white text-xs md:text-sm font-semibold">
           <Navigation />
         </div>
 
@@ -28,13 +28,13 @@ export default function PageLayout({ children }) {
 
           {/* Bottom row (green) */}
           <div className="relative z-20 grid grid-cols-1 lg:grid-cols-[1fr_12fr] gap-4 h-full">
-  <div className="rounded-lg p-4 h-full overflow-y-auto lg:overflow-hidden order-first lg:order-last">
-    {children}
-  </div>
-  <div className="rounded-lg p-4 h-full order-last lg:order-first">
-    <SocialLinks />
-  </div>
-</div>
+            <div className="rounded-lg p-4 h-full overflow-y-auto lg:overflow-hidden order-first lg:order-last">
+              {children}
+            </div>
+            <div className="rounded-lg p-4 h-full order-last lg:order-first">
+              <SocialLinks />
+            </div>
+          </div>
         </div>
       </div>
     </div>
