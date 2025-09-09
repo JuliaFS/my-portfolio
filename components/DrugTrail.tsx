@@ -15,13 +15,12 @@ const flowers = [
 ];
 
 export default function DragFlowerTrail() {
-  const handRef = useRef<HTMLDivElement>(null);
+  const handRef = useRef(null);
   const dragging = useRef(false);
 
   const [handPos, setHandPos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    // Function to set the hand's initial position
     const setInitialHandPos = () => {
       const taglineEl = document.getElementById('tagline');
       let x, y;
@@ -29,68 +28,79 @@ export default function DragFlowerTrail() {
       if (taglineEl) {
         const rect = taglineEl.getBoundingClientRect();
         
-        // Use responsive logic based on screen width
         const screenWidth = window.innerWidth;
-        if (screenWidth >= 640) { // Large screens (lg and up)
-  x = rect.left - 100;
-  y = rect.top + rect.height / 2 - 45;
-// } 
-// else if (screenWidth >= 640) { // Medium screens (md)
-//   x = window.innerWidth / 2 - 180;
-//   y = window.innerHeight / 2 - 60;
-} else { // Small screens (sm)
-  x = window.innerWidth / 2 - 180;
-  y = window.innerHeight / 2 - 90;
-}
+        if (screenWidth >= 640) {
+          x = rect.left - 100;
+          y = rect.top + rect.height / 2 - 45;
+        } else {
+          x = window.innerWidth / 2 - 180;
+          y = window.innerHeight / 2 - 120;
+        }
         
         setHandPos({ x, y });
       } else {
-        // Fallback default for all screen sizes if tagline not found
         setHandPos({ x: window.innerWidth * 0.4, y: window.innerHeight * 0.4 });
       }
     };
 
-    // Set initial position and also listen for window resize
     setInitialHandPos();
     window.addEventListener('resize', setInitialHandPos);
 
-    // Mouse event handlers remain the same
     const hand = handRef.current;
     if (!hand) return;
 
-    function onMouseDown() {
+    // Helper function to get coordinates from mouse or touch events
+    const getCoords = (e) => {
+      if (e.touches && e.touches.length > 0) {
+        return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      }
+      return { x: e.clientX, y: e.clientY };
+    };
+
+    // Unified event handlers for mouse and touch
+    const onStart = (e) => {
       dragging.current = true;
-      hand.style.cursor = 'grabbing';
-    }
+      if (hand) hand.style.cursor = 'grabbing';
+    };
 
-    function onMouseUp() {
+    const onEnd = (e) => {
       dragging.current = false;
-      hand.style.cursor = 'grab';
-    }
+      if (hand) hand.style.cursor = 'grab';
+    };
 
-    function onMouseMove(e: MouseEvent) {
+    const onMove = (e) => {
       if (!dragging.current) return;
+      e.preventDefault();
 
-      const x = e.clientX - 40;
-      const y = e.clientY - 40;
+      const { x: clientX, y: clientY } = getCoords(e);
+      const x = clientX - 40;
+      const y = clientY - 40;
       setHandPos({ x, y });
+      spawnFlower(clientX, clientY);
+    };
 
-      spawnFlower(e.clientX, e.clientY);
-    }
+    // Add mouse event listeners
+    window.addEventListener('mousedown', onStart);
+    window.addEventListener('mouseup', onEnd);
+    window.addEventListener('mousemove', onMove);
 
-    window.addEventListener('mousedown', onMouseDown);
-    window.addEventListener('mouseup', onMouseUp);
-    window.addEventListener('mousemove', onMouseMove);
+    // Add touch event listeners
+    window.addEventListener('touchstart', onStart, { passive: false });
+    window.addEventListener('touchend', onEnd);
+    window.addEventListener('touchmove', onMove, { passive: false });
 
     return () => {
-      window.removeEventListener('mousedown', onMouseDown);
-      window.removeEventListener('mouseup', onMouseUp);
-      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mousedown', onStart);
+      window.removeEventListener('mouseup', onEnd);
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('touchstart', onStart);
+      window.removeEventListener('touchend', onEnd);
+      window.removeEventListener('touchmove', onMove);
       window.removeEventListener('resize', setInitialHandPos);
     };
   }, []);
 
-  const spawnFlower = (x: number, y: number) => {
+  const spawnFlower = (x, y) => {
     const flowerObj = flowers[Math.floor(Math.random() * flowers.length)];
     const container = document.createElement('div');
     container.style.position = 'absolute';
@@ -102,7 +112,7 @@ export default function DragFlowerTrail() {
     document.body.appendChild(container);
 
     const root = createRoot(container);
-    root.render(<flowerObj.Icon color={flowerObj.color} size={24} />);
+    root.render(React.createElement(flowerObj.Icon, { color: flowerObj.color, size: 24 }));
 
     const angle = Math.random() * Math.PI * 2;
     const dist = 150 + Math.random() * 100;
