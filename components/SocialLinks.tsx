@@ -12,6 +12,7 @@ export default function SocialLinks() {
         rel="noopener noreferrer"
         className="w-12 h-12 flex items-center justify-center rounded-full bg-purple-600 hover:bg-purple-700 text-white text-2xl transition duration-300 shadow-md"
         style={{ boxShadow: '0 0 10px rgba(168, 85, 247, 0.7)' }}
+        data-icon="linkedin"
       >
         <FaLinkedinIn />
       </a>
@@ -21,6 +22,7 @@ export default function SocialLinks() {
         rel="noopener noreferrer"
         className="w-12 h-12 flex items-center justify-center rounded-full bg-purple-600 hover:bg-purple-700 text-white text-2xl transition duration-300 shadow-md"
         style={{ boxShadow: '0 0 10px rgba(168, 85, 247, 0.7)' }}
+        data-icon="github"
       >
         <FaGithub />
       </a>
@@ -28,6 +30,7 @@ export default function SocialLinks() {
         href="mailto:yuliya.f.s@gmail.com"
         className="w-12 h-12 flex items-center justify-center rounded-full bg-purple-600 hover:bg-purple-700 text-white text-2xl transition duration-300 shadow-md"
         style={{ boxShadow: '0 0 10px rgba(168, 85, 247, 0.7)' }}
+        data-icon="email"
       >
         <FaEnvelope />
       </a>
