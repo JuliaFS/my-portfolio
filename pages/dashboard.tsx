@@ -68,7 +68,7 @@ const DashboardPage = () => {
         cityMap[`${country} - ${city}`] = (cityMap[`${country} - ${city}`] || 0) + 1;
 
         data.clicks?.forEach((click) => {
-          const icon = click.icon || "unknown";
+          const icon = click.icon || "all";
           iconMap[icon] = (iconMap[icon] || 0) + 1;
         });
       });
