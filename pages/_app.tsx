@@ -1,19 +1,27 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { useState } from 'react'
-import Head from 'next/head'
-import useUserActivityTracker from '../hooks/useUserActivityTracker'
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+import Head from "next/head";
+import useUserActivityTracker from "../hooks/useUserActivityTracker";
+import ConsentBanner from "../components/ConsentBanner";
+import { useRouter } from "next/router";
 // import FlyingEffect from '../components/FlyingEffect'
 // import DrugTrail from '../components/DrugTrail'
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [queryClient] = useState(() => new QueryClient())
-  // This hook will now be active on all pages
-  useUserActivityTracker();
+  const [queryClient] = useState(() => new QueryClient());
+  const router = useRouter();
+  const isDashboard = router.pathname === "/dashboard";
+
+  // Only run the activity tracker on non-dashboard pages
+  if (!isDashboard) {
+    useUserActivityTracker();
+  }
+
   return (
     <QueryClientProvider client={queryClient}>
-            <Head>
+      <Head>
         {/* Add your viewport meta here */}
         <meta
           name="viewport"
@@ -24,9 +32,10 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
       <Component {...pageProps} />
-      
+       <ConsentBanner />
+
       {/* <DrugTrail /> */}
       {/* <FlyingEffect /> */}
     </QueryClientProvider>
-  )
+  );
 }
