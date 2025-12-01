@@ -9,6 +9,12 @@ import { FiLink } from "react-icons/fi";
 
 const projects = [
   {
+    src: "/images/projects/multiplayer-drawing-app.jpg",
+    alt: "Project using WebSockets and Node.js",
+    text: "This collaborative drawing board is built with React, TypeScript, Tailwind CSS, Firebase, and Socket.IO. Real-time drawing, cursor tracking, and chat are synchronized using WebSockets through a Node.js + Socket.IO backend, deployed as a web service on Render. The project integrates the Firebase SDK for environment setup and uses Firebase as a lightweight database layer. Canvas interactions are powered by the HTML5 Canvas API, supporting both mouse and touch input. The UI is fully responsive, providing a seamless multi-user experience across mobile and desktop devices.",
+    link: "https://multiplayer-drawing-app.onrender.com/",
+  },
+  {
     src: "/images/projects/mnr-big.jpg",
     alt: "Project for Metal Hold Pro",
     text: "Development of an ERP system from scratch for tracking and managing public procurement contracts undertaken by subcontractors. I am using React, React Query, Typescript, Axios, Tailwind CSS.",
@@ -20,7 +26,7 @@ const projects = [
     text: "Part-time online work on a project as a continuation of my SoftUni internship. We use React, React Query, and Tailwind CSS as front-end technologies for visualizing data.",
     link: "https://garantbulgaria.com/",
   },
-    {
+  {
     src: "/images/projects/online-visit-card.jpg",
     alt: "Online business card",
     text: "This is my online business card, featuring a carousel that showcases the technologies I use most.",
@@ -32,13 +38,13 @@ const projects = [
     text: "A hobby project for a sample gallery of young artists. I’m using React, TypeScript, React Query, Redux for state management, and Firebase as the database. Hosted online via GitHub Pages.",
     link: "https://juliafs.github.io/Galeriq-Gyundogan/",
   },
-    {
+  {
     src: "/images/projects/softuni-exam-project-react.jpg",
     alt: "Galery Gyundogan - SoftUni exam project",
     text: "SoftUni exam project for React. Built with React and TypeScript, using fetch for data handling and the SoftUni training server as backend. Hosted online via Firebase Hosting.",
     link: "https://galeriq-guyndogan.web.app/",
   },
-      {
+  {
     src: "/images/projects/softuni-angular-project.jpg",
     alt: "Calisto - SoftUni exam project",
     text: "SoftUni exam project for Angular. Built with Angular, using the Fetch API for data handling and Firebase as the backend. Hosted online via Firebase Hosting.",
@@ -77,7 +83,7 @@ export default function Projects() {
               alt={projects[index].alt}
               width={200}
               height={160}
-              className="rounded-lg shadow-lg object-cover border border-gray-100"
+              className="rounded-lg shadow-lg object-cover border border-gray-100 cursor-pointer"
               onClick={() => setIsOpen(true)}
             />
             <div className="text-left mx-4">
@@ -88,7 +94,9 @@ export default function Projects() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block mb-2 text-purple-600 font-semibold hover:underline"
-                >View Online</a>
+                >
+                  View Online
+                </a>
               </div>
               <p className="text-left">{projects[index].text}</p>
             </div>
@@ -131,6 +139,16 @@ export default function Projects() {
               height={700}
               className="rounded-lg shadow-lg object-contain max-w-[90vw]"
             />
+            <div className="mt-4 px-6 md:px-12 text-lg text-center w-full max-w-[90vw] flex justify-center font-bold">
+              <a
+                href={projects[index].link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-purple-300 hover:text-purple-100 hover:underline"
+              >
+                <FiLink /> View Online
+              </a>
+            </div>
             <p className="mt-4 text-white px-6 md:px-12 text-lg text-left">
               {projects[index].text}
             </p>
