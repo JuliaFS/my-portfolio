@@ -86,7 +86,6 @@ const useUserActivityTracker = () => {
         await updateDoc(sessionRef, {
           clicks: arrayUnion(clickData),
         });
-        console.log("🖱️ Click added:", clickData);
       } catch (error) {
         console.error("❌ Error updating session clicks:", error);
       }
