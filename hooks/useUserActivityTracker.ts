@@ -11,7 +11,6 @@ import { db } from "../lib/firebase";
 
 const useUserActivityTracker = () => {
   useEffect(() => {
-    // Generate or reuse a unique session ID per tab
     let sessionId = sessionStorage.getItem("sessionId");
     if (!sessionId) {
       sessionId = crypto.randomUUID();
@@ -36,7 +35,6 @@ const useUserActivityTracker = () => {
         console.error("Could not fetch location:", error);
       }
 
-      // 1️⃣ Create session doc
       await setDoc(
         sessionRef,
         {
@@ -52,15 +50,13 @@ const useUserActivityTracker = () => {
         { merge: true }
       );
 
-      // 2️⃣ Increment total visits
-      const totalRef = doc(db, "analytics", "total_visits"); // ✅ document
+      const totalRef = doc(db, "analytics", "total_visits");
       await updateDoc(totalRef, { count: increment(1) }).catch(async () => {
         await setDoc(totalRef, { count: 1 });
       });
 
-      // 3️⃣ Increment daily visits
       const today = new Date().toISOString().split("T")[0];
-      const dailyRef = doc(db, "daily_visits", today); // Path: /daily_visits/{date}
+      const dailyRef = doc(db, "daily_visits", today);
       await updateDoc(dailyRef, { count: increment(1) }).catch(async () => {
         await setDoc(dailyRef, { count: 1 });
       });
@@ -70,15 +66,18 @@ const useUserActivityTracker = () => {
 
     initializeSession();
 
-    // Handle clicks
+    // 🔥 FIXED CLICK TRACKER
     const handleClick = async (event: MouseEvent) => {
       const target = event.target as HTMLElement;
-      const clickable = target.closest("a, button, div, span");
+      const clickable = target.closest("a, button, div, span") as HTMLElement | null;
+
+      if (!clickable) return;
+
+      const isLink = clickable instanceof HTMLAnchorElement;
 
       const clickData = {
-        content: clickable?.textContent?.slice(0, 100) || target.textContent?.slice(0, 100),
-        icon: clickable?.getAttribute("data-icon") || null,
-        href: clickable instanceof HTMLAnchorElement ? clickable.href : null,
+        icon: clickable.getAttribute("data-icon") || null,
+        link: isLink ? clickable.href : null, // ← FIXED: dashboard expects "link"
         time: new Date().toISOString(),
       };
 
@@ -97,6 +96,7 @@ const useUserActivityTracker = () => {
 };
 
 export default useUserActivityTracker;
+
 
 
 
