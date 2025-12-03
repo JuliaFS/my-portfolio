@@ -6,6 +6,7 @@ import Head from "next/head";
 import useUserActivityTracker from "../hooks/useUserActivityTracker";
 import ConsentBanner from "../components/ConsentBanner";
 import { useRouter } from "next/router";
+import { Analytics } from '@vercel/analytics/next';
 // import FlyingEffect from '../components/FlyingEffect'
 // import DrugTrail from '../components/DrugTrail'
 
@@ -34,6 +35,8 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <Component {...pageProps} />
        <ConsentBanner />
+       <Analytics />
+       
 
       {/* <DrugTrail /> */}
       {/* <FlyingEffect /> */}
