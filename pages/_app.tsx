@@ -6,7 +6,7 @@ import Head from "next/head";
 import useUserActivityTracker from "../hooks/useUserActivityTracker";
 import ConsentBanner from "../components/ConsentBanner";
 import { useRouter } from "next/router";
-import { Analytics } from '@vercel/analytics/next';
+import { Analytics } from "@vercel/analytics/next";
 // import FlyingEffect from '../components/FlyingEffect'
 // import DrugTrail from '../components/DrugTrail'
 
@@ -31,12 +31,10 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
-
       </Head>
       <Component {...pageProps} />
-       <ConsentBanner />
-       <Analytics />
-       
+      <ConsentBanner />
+      <Analytics />
 
       {/* <DrugTrail /> */}
       {/* <FlyingEffect /> */}
