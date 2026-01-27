@@ -9,6 +9,12 @@ import { FiLink } from "react-icons/fi";
 
 const projects = [
   {
+    src: "/images/projects/online-store.png",
+    alt: "Project using Node.js, Supabase and Next.js",
+    text: "Full-stack application with a Node.js backend handling business logic and API endpoints, integrated with Supabase for database management, authentication, and real-time features. The backend communicates with the frontend (Next.js/TypeScript/Tailwind CSS) to provide dynamic data, user authentication, and persistent storage (HTTP only cookies). Supabase serves as primary database and authentication layer, while Node.js handles custom server-side logic, API requests, and interactions with Supabase.",
+    link: "https://gifts-plus.vercel.app/",
+  },
+  {
     src: "/images/projects/multiplayer-drawing-app.jpg",
     alt: "Project using WebSockets and Node.js",
     text: "This collaborative drawing board is built with React, TypeScript, Tailwind CSS, Firebase, and Socket.IO. Real-time drawing, cursor tracking, and chat are synchronized using WebSockets through a Node.js + Socket.IO backend, deployed as a web service on Render. The project integrates the Firebase SDK for environment setup and uses Firebase as a lightweight database layer. Canvas interactions are powered by the HTML5 Canvas API, supporting both mouse and touch input. The UI is fully responsive, providing a seamless multi-user experience across mobile and desktop devices.",
