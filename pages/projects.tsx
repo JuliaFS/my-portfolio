@@ -14,6 +14,12 @@ const projects = [
     text: "Full-stack application with a Node.js backend handling business logic and API endpoints, integrated with Supabase for database management, authentication, and real-time features. The backend communicates with the frontend (Next.js/TypeScript/Tailwind CSS) to provide dynamic data, user authentication, and persistent storage (HTTP only cookies). Supabase serves as primary database and authentication layer, while Node.js handles custom server-side logic, API requests, and interactions with Supabase.",
     link: "https://gifts-plus.vercel.app/",
   },
+    {
+    src: "/images/projects/simple-mahjong-game.png",
+    alt: "Project using Angular and Pixi.js",
+    text: "Simple Mahjong game built with Angular and Pixi.js. The game features a clean UI, smooth animations, and responsive design. It includes a tile-matching mechanic where players can remove pairs of matching tiles from the board (with implemented hint and shuffle). The game is hosted online via Vercel.",
+    link: "https://mahjong-one-beta.vercel.app/",
+  },
   {
     src: "/images/projects/multiplayer-drawing-app.jpg",
     alt: "Project using WebSockets and Node.js",
