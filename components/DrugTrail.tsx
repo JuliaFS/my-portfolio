@@ -1,4 +1,4 @@
-'use client'; // For Next.js 13+ app directory
+'use client'; 
 
 import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';

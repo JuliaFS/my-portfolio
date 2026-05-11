@@ -8,6 +8,12 @@ import { FaArrowLeft, FaArrowRight, FaTimes } from "react-icons/fa";
 import { FiLink } from "react-icons/fi";
 
 const projects = [
+    {
+    src: "/images/projects/dclassifai.jpg",
+    alt: "Platform to transform spreadsheets into action-ready data.",
+    text: "Spreadsheet transformation platform that converts complex spreadsheets into structured, action-ready data. Built with React, TypeScript, and Python, the platform includes advanced table processing, interactive data handling, chat functionality, secure authentication, and a modern responsive interface for efficient workflow management.",
+    link: "https://dclassifai.com/",
+  },
   {
     src: "/images/projects/online-store.png",
     alt: "Project using Node.js, Supabase and Next.js",
